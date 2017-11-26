@@ -12,8 +12,7 @@
     <mat-icon>volume_mute</mat-icon>
   </button>
   <mat-chip-list [style.display]="'inline-block'">
-    <mat-chip [innerHTML]="currentTime"></mat-chip>
-    <mat-chip [innerHTML]="totalTime"></mat-chip>
+    <mat-chip [innerHTML]="currentTime+' / '+totalTime"></mat-chip>
   </mat-chip-list>
   <div [style.display]="'inline-block'" [style.width]="'60%'">
     <div class="slider-wrapper" [style.width]="'100%'" (mousemove)="hover($event)" (click)="click($event)">
