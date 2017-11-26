@@ -1,0 +1,9 @@
+.slider-wrapper {
+  background: #CCC;
+  position: relative;
+  .slider-progress {
+    height: 10px;
+    background: red;
+    // position: absolute;
+  }
+}

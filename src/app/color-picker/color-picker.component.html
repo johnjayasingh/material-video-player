@@ -1,0 +1,10 @@
+<button (click)="isOpen=!isOpen" [style.background]="selectedColor || 'none'" cdkOverlayOrigin #trigger="cdkOverlayOrigin">
+  Color
+</button>
+
+<ng-template 
+  cdkConnectedOverlay 
+  [cdkConnectedOverlayOrigin]="trigger" 
+  [cdkConnectedOverlayOpen]="isOpen">
+  Color Picker
+</ng-template>
