@@ -1,22 +1,29 @@
-<video #video src="\assets\Padmavati   Official Trailer   Ranveer Singh   Shahid Kapoor   Deepika Padukone.mp4">
+<div class="video-container" [class.fullscreen]="fullScreenMode" #videocontainer>
+  <video [class.fullscreen]="fullScreenMode" #video src="\assets\Padmavati   Official Trailer   Ranveer Singh   Shahid Kapoor   Deepika Padukone.mp4">
 
-</video>
-<div class="controls">
-  <button mat-button (click)="play()" *ngIf="isPaused">
-    <mat-icon>play_arrow</mat-icon>
-  </button>
-  <button mat-button (click)="pause()" *ngIf="!isPaused">
-    <mat-icon>pause_circle_filled</mat-icon>
-  </button>
-  <button mat-button (click)="mute()">
-    <mat-icon>volume_mute</mat-icon>
-  </button>
-  <mat-chip-list [style.display]="'inline-block'">
-    <mat-chip [innerHTML]="currentTime+' / '+totalTime"></mat-chip>
-  </mat-chip-list>
-  <div [style.display]="'inline-block'" [style.width]="'60%'">
-    <div class="slider-wrapper" [style.width]="'100%'" (mousemove)="hover($event)" (click)="click($event)">
-      <div class="slider-progress" [style.width]="currentTimePercentage +'%'"></div>
+  </video>
+  <div class="controls">
+    <button mat-button (click)="play()" *ngIf="isPaused">
+      <mat-icon>play_arrow</mat-icon>
+    </button>
+    <button mat-button (click)="pause()" *ngIf="!isPaused">
+      <mat-icon>pause_circle_filled</mat-icon>
+    </button>
+    <button mat-button (click)="mute()">
+      <mat-icon>volume_mute</mat-icon>
+    </button>
+    <mat-chip-list [style.display]="'inline-block'">
+      <mat-chip [innerHTML]="currentTime+' / '+totalTime"></mat-chip>
+    </mat-chip-list>
+    <div [style.display]="'inline-block'" [style.width]="'60%'">
+      <div class="slider-wrapper" [style.width]="'100%'" (mousemove)="hover($event)" (click)="click($event)">
+        <div class="slider-progress" [style.width]="currentTimePercentage +'%'"></div>
+      </div>
     </div>
+    <button mat-button (click)="fullscreen()">
+      <mat-icon *ngIf="!fullScreenMode">fullscreen</mat-icon>
+      <mat-icon *ngIf="fullScreenMode">fullscreen_exit</mat-icon>
+    </button>
   </div>
+
 </div>

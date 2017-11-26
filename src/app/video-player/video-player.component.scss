@@ -3,7 +3,29 @@
   position: relative;
   .slider-progress {
     height: 10px;
-    background: red;
-    // position: absolute;
+    background: red; // position: absolute;
   }
+}
+
+.fullscreen {
+  width: 100%;
+  .controls {
+    bottom: 0px;
+  }
+}
+
+video::-webkit-media-controls {
+  display: none !important;
+}
+
+:-webkit-full-screen {
+  background-color: black;
+  width: 100%;
+}
+
+.controls {
+  position: relative;
+  bottom: 45px;
+  background: white;
+  opacity: 1;
 }

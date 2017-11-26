@@ -9,12 +9,15 @@ import { ElementRef } from '@angular/core/src/linker/element_ref';
 })
 export class VideoPlayerComponent implements OnInit, AfterViewInit {
   @ViewChild('video') video: any;
+  @ViewChild('videocontainer') videocontainer: any;
   videoPlayer: HTMLVideoElement;
+  videoPlayercontainer: HTMLElement;
   currentTime: String = "00:00";
   totalTime: String = "00:00";
   currentTimeSeconds: number = 0;
   currentTimePercentage: number = 0;
   isPaused: Boolean = true;
+  fullScreenMode: Boolean = false;
 
   constructor() { }
 
@@ -23,6 +26,7 @@ export class VideoPlayerComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     this.videoPlayer = this.video.nativeElement;
+    this.videocontainer = this.videocontainer.nativeElement;
     setInterval(() => {
       //String("0" + this.videoPlayer.currentTime).slice(-2)
       this.currentTime = this.returnTime(this.videoPlayer.currentTime);
@@ -46,6 +50,20 @@ export class VideoPlayerComponent implements OnInit, AfterViewInit {
     // console.log(event.offsetX + ": OffsetX");
     // console.log(event.offsetX + ": OffsetX");
     // console.log(this.videoPlayer.currentTime)
+  }
+
+  fullscreen() {
+    this.fullScreenMode = !this.fullScreenMode;
+    if (this.fullScreenMode) {
+      if (this.videoPlayer.requestFullscreen) {
+        this.videocontainer.requestFullscreen();
+      } else if (this.videoPlayer.webkitRequestFullscreen) {
+        this.videocontainer.webkitRequestFullscreen();
+      }
+    }
+    else
+      if (document.webkitCancelFullScreen)
+        document.webkitCancelFullScreen();
   }
 
   returnTime(time: number) {
